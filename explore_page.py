@@ -31,7 +31,7 @@ import os
 
 @st.cache_data
 def load_data():
-    df = pd.read_csv("https://path/to/survey_results_public.csv")
+    df = pd.read_csv("https://info.stackoverflowsolutions.com/rs/719-EJJ-772/images/stack-overflow-developer-survey-2020-results.csv")
     
     salary_column = None
     for candidate in ["ConvertedCompYearly", "ConvertedComp", "ConvertedCompTotal"]:
