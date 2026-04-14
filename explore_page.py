@@ -31,7 +31,7 @@ import os
 
 @st.cache_data
 def load_data():
-    df = pd.read_csv(os.path.join(os.path.dirname(__file__), "survey_results_public.csv"))
+    df = pd.read_csv("https://path/to/survey_results_public.csv")
     
     salary_column = None
     for candidate in ["ConvertedCompYearly", "ConvertedComp", "ConvertedCompTotal"]:
