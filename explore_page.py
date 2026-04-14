@@ -31,7 +31,7 @@ import os
 
 @st.cache_data
 def load_data():
-    df = pd.read_csv("https://raw.githubusercontent.com/KevinLiao159/StackOverflowSurvey/master/data/survey_results_public.csv")
+    df = pd.read_csv("https://www.kaggle.com/api/v1/datasets/download/stackoverflow/stack-overflow-2020-developer-survey")
     
     print("Available columns:", df.columns.tolist())  # Add this to see all columns
     
