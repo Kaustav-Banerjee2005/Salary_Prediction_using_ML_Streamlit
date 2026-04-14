@@ -33,12 +33,13 @@ import os
 def load_data():
     df = pd.read_csv("https://info.stackoverflowsolutions.com/rs/719-EJJ-772/images/stack-overflow-developer-survey-2020-results.csv")
     
+    print("Available columns:", df.columns.tolist())  # Add this to see all columns
+    
     salary_column = None
     for candidate in ["ConvertedCompYearly", "ConvertedComp", "ConvertedCompTotal"]:
         if candidate in df.columns:
             salary_column = candidate
             break
-
     if salary_column is None:
         raise KeyError("No salary column found in survey_results_public.csv")
 
