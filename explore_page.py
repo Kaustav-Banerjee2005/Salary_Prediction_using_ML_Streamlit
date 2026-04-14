@@ -27,11 +27,12 @@ def clean_education(x):
     
     return "Less than a Bachelor"
 
-@st.cache_data
-# does not re-run the function on every rerun
-def load_data():
-    df = pd.read_csv("survey_results_public.csv")
+import os
 
+@st.cache_data
+def load_data():
+    df = pd.read_csv(os.path.join(os.path.dirname(__file__), "survey_results_public.csv"))
+    
     salary_column = None
     for candidate in ["ConvertedCompYearly", "ConvertedComp", "ConvertedCompTotal"]:
         if candidate in df.columns:
