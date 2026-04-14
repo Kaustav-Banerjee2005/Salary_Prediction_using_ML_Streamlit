@@ -32,7 +32,7 @@ This project is an end-to-end machine learning application that allows users to:
 The entire pipeline — from data cleaning and model training (in a Jupyter Notebook) to deployment as a web app (via Streamlit) — is included in this repository.
 
 ---
-** Live Demo ** ---> https://paypro.streamlit.app/
+Live Demo  ---> https://paypro.streamlit.app/
 
 ## 🛠️ Tech Stack
 
