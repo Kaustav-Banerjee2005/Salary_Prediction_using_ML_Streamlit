@@ -31,9 +31,24 @@ import os
 
 @st.cache_data
 def load_data():
-    df = pd.read_csv("https://www.kaggle.com/api/v1/datasets/download/stackoverflow/stack-overflow-2020-developer-survey")
-    
-    print("Available columns:", df.columns.tolist())  # Add this to see all columns
+    try:
+        # Try to load from local file first
+        df = pd.read_csv("survey_results_public.csv")
+    except FileNotFoundError:
+        try:
+            # Try working GitHub URL as backup
+            url = "https://raw.githubusercontent.com/stackoverflow/survey-data/main/2020/survey_results_public.csv"
+            df = pd.read_csv(url)
+        except Exception as e:
+            # If all else fails, create sample data
+            st.warning("Could not load survey data. Using sample data instead.")
+            df = pd.DataFrame({
+                'Country': ['United States', 'India', 'Germany', 'United Kingdom', 'Canada'] * 100,
+                'EdLevel': ['Bachelor\'s degree', 'Master\'s degree', 'Post grad', 'Less than a Bachelor'] * 125,
+                'YearsCodePro': [1, 3, 5, 10, 15, 20, 25, 30] * 62 + [1],
+                'ConvertedCompYearly': [60000, 80000, 100000, 120000, 140000] * 100,
+                'Employment': 'Employed full-time'
+            })
     
     salary_column = None
     for candidate in ["ConvertedCompYearly", "ConvertedComp", "ConvertedCompTotal"]:
